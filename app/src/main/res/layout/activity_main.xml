@@ -8,25 +8,25 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/main_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="WQMS"
+        android:text="@string/app_name"
         android:textColor="@color/colorTitle"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/main_app_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/main_app_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Water Quality Monitoring System"
+        android:text="@string/app_title"
         android:textColor="@color/colorTitle"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,12 +46,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Monitoring"
+        android:text="@string/label_goto_graphs"
         app:layout_constraintBottom_toTopOf="@+id/about_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/main_app_title"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
@@ -62,7 +62,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="About"
+        android:text="@string/label_goto_about"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,12 +71,20 @@
     <ImageButton
         android:id="@+id/logo_button"
         android:layout_width="171dp"
-        android:layout_height="67dp"
+        android:layout_height="54dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
+        android:background="@null"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logos" />
+        app:srcCompat="@drawable/logos"
+        android:contentDescription="@string/description_logo"/>
+
+    <android.support.constraint.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </android.support.constraint.ConstraintLayout>
