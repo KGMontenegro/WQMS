@@ -25,31 +25,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // set up logo redirections
+        // todo set up logo redirections
         logoButton = findViewById(R.id.logo_button);
-        logoButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                Rect hitRect = new Rect();
-                view.getHitRect(hitRect);
-                Log.d(TAG, "onTouch: logo hitRect is: " + hitRect);
-//                view.per
-                return true;
-            }
-        });
-//        logoButton.setOnClickListener(new View.OnClickListener() {
+//        logoButton.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
-//            public void onClick(View view) {
-//                boolean clickWasOnRight = false;
-//                if (clickWasOnRight)
-//                    redirect("http://www.sonoma.edu");
-//                else
-//                    redirect("http://www.atu.edu");
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                Rect hitRect = new Rect();
+//                view.getHitRect(hitRect);
+//                Log.d(TAG, "onTouch: logo hitRect is: " + hitRect);
+////                view.per
+//                return true;
 //            }
 //        });
-
-
-
+        logoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean clickWasOnRight = true;
+                if (clickWasOnRight)
+                    redirect("http://www.sonoma.edu");
+                else
+                    redirect("http://www.atu.edu");
+            }
+        });
 
 
         aboutButton = findViewById(R.id.about_button);

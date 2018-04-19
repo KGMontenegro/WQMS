@@ -16,8 +16,15 @@ public class RawJsonFetcher extends AsyncTask<String, String, String> {
     private String baseUrl;
     private CallbackListener listener;
 
-    public RawJsonFetcher(String baseUrl, CallbackListener listener) {
+    public RawJsonFetcher() {
+        baseUrl = mockDataUrl;
+    }
+
+    public RawJsonFetcher(String baseUrl) {
         this.baseUrl = baseUrl;
+    }
+
+    public void setListener(CallbackListener listener) {
         this.listener = listener;
     }
 
@@ -45,10 +52,11 @@ public class RawJsonFetcher extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        listener.onCallback(result);
+        if (listener != null)
+            listener.onCallback(result);
     }
 
-    interface CallbackListener {
+    public interface CallbackListener {
         void onCallback(String result);
     }
 }
