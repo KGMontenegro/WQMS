@@ -3,6 +3,7 @@ package com.nederlonder.wqms.network;
 import android.os.AsyncTask;
 
 import java.io.IOException;
+import java.util.Map;
 
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
@@ -11,14 +12,10 @@ import okhttp3.Response;
 
 public class RawJsonFetcher extends AsyncTask<String, String, String> {
 
-    public static final String mockDataUrl = "http://130.157.3.112/ceistudent1/tutorial/montenek/default.php";
-
     private String baseUrl;
     private CallbackListener listener;
-
-    public RawJsonFetcher() {
-        baseUrl = mockDataUrl;
-    }
+//    private Map<String, String> queryParameters;
+//    private Map<String, String> ;
 
     public RawJsonFetcher(String baseUrl) {
         this.baseUrl = baseUrl;
@@ -30,9 +27,13 @@ public class RawJsonFetcher extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... strings) {
+//        String searchParams = params[0];
         OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl).newBuilder();
 
+//        urlBuilder.addQueryParameter("_app_key", apiKey);
+//        urlBuilder.addQueryParameter("_app_id", appId);
+//        urlBuilder.addQueryParameter("your_search_parameters", searchParams);
         String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder().url(url).build();
