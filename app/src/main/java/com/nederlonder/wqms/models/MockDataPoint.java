@@ -1,14 +1,17 @@
 package com.nederlonder.wqms.models;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+
 public class MockDataPoint {
 
-    String id;
-    double temp;
-    String humidity;
-    String co2;
-    String particle;
-    String ozone;
-    String time;
+    private String id;
+    private double temp;
+    private String humidity;
+    private String co2;
+    private String particle;
+    private String ozone;
+    private String time;
 
     public String getId() {
         return id;
@@ -36,6 +39,10 @@ public class MockDataPoint {
 
     public String getTime() {
         return time;
+    }
+
+    public DateTime getDate() {
+        return DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").parseDateTime(time);
     }
 
     @Override

@@ -22,11 +22,39 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart"
+        android:id="@+id/chart_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/about_text"
+        app:layout_constraintBottom_toTopOf="@+id/chart_humidity"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart_humidity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/chart_temperature"
+        app:layout_constraintBottom_toTopOf="@id/chart_co2"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart_co2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/chart_humidity"
+        app:layout_constraintBottom_toTopOf="@id/chart_particle"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart_particle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/chart_co2"
+        app:layout_constraintBottom_toTopOf="@id/chart_ozone"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart_ozone"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/about_text" />
+        app:layout_constraintTop_toBottomOf="@id/chart_particle"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
