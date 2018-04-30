@@ -8,12 +8,10 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.nederlonder.wqms.models.MockDataPoint;
+import com.nederlonder.wqms.mock.MockDataPoint;
 
 import java.lang.reflect.Type;
-import java.text.DateFormat;
 import java.util.ArrayList;
 
 public class HistoricalActivity extends AppCompatActivity {

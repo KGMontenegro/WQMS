@@ -1,9 +1,11 @@
-package com.nederlonder.wqms.models;
+package com.nederlonder.wqms.mock;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
 public class MockDataPoint {
+
+    private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
     private String id;
     private double temp;
@@ -37,12 +39,12 @@ public class MockDataPoint {
         return ozone;
     }
 
-    public String getTime() {
-        return time;
-    }
+//    public DateTime getTime() {
+//        return time;
+//    }
 
     public DateTime getDate() {
-        return DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").parseDateTime(time);
+        return DateTimeFormat.forPattern(DATE_PATTERN).parseDateTime(time);
     }
 
     @Override

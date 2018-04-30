@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.nederlonder.wqms.network.MockDataLoader;
-import com.nederlonder.wqms.network.MockJsonFetcher;
-import com.nederlonder.wqms.network.RawJsonFetcher;
+import com.nederlonder.wqms.mock.MockDataLoader;
 
 /**
  * Page to select which graph to view - live or time range.

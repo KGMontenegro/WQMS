@@ -15,7 +15,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.nederlonder.wqms.models.MockDataPoint;
+import com.nederlonder.wqms.mock.MockDataPoint;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

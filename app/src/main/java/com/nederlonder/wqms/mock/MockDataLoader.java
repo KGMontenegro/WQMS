@@ -1,4 +1,4 @@
-package com.nederlonder.wqms.network;
+package com.nederlonder.wqms.mock;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
