@@ -1,4 +1,4 @@
-package com.nederlonder.wqms;
+package com.nederlonder.wqms.models;
 
 public enum ChartType {
     TEMPERATURE,

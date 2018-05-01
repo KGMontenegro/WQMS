@@ -1,8 +1,5 @@
 package com.nederlonder.wqms.mock;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-
 public class MockDataPoint {
 
     private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
@@ -39,13 +36,13 @@ public class MockDataPoint {
         return ozone;
     }
 
-//    public DateTime getTime() {
-//        return time;
-//    }
-
-    public DateTime getDate() {
-        return DateTimeFormat.forPattern(DATE_PATTERN).parseDateTime(time);
+    public String getTime() {
+        return time;
     }
+
+//    public DateTime getDate() {
+//        return DateTimeFormat.forPattern(DATE_PATTERN).parseDateTime(time);
+//    }
 
     @Override
     public String toString() {

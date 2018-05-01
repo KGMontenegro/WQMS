@@ -21,6 +21,10 @@ public class RawJsonFetcher extends AsyncTask<String, String, String> {
         this.baseUrl = baseUrl;
     }
 
+    public RawJsonFetcher(String baseUrl, Map<String, String> urlParameters) {
+        this.baseUrl = baseUrl;
+    }
+
     public void setListener(CallbackListener listener) {
         this.listener = listener;
     }
