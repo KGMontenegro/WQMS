@@ -9,13 +9,14 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.nederlonder.wqms.models.MockDataPoint;
+import com.nederlonder.wqms.mock.MockDataPoint;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class HistoricalActivity extends AppCompatActivity {
 
+    private final String TAG = "[HistoricalActivity]";
     private static String TAG_RAW_DATA = "LIVE_DATA";
 
 
@@ -34,6 +35,7 @@ public class HistoricalActivity extends AppCompatActivity {
         String rawMockData = getIntent().getStringExtra(TAG_RAW_DATA);
         Type type = TypeToken.getParameterized(ArrayList.class, MockDataPoint.class).getType();
         ArrayList<MockDataPoint> mockData = gson.fromJson(rawMockData, type);
+        Log.d(TAG, "loaded " + mockData.size() + " elements");
 
         TextView text = findViewById(R.id.historical_text_view);
         text.setText("Data History Graph (coming soon)\n\nmock data: ("+mockData.size()+" data points)\n" + mockData);

@@ -1,14 +1,16 @@
-package com.nederlonder.wqms.models;
+package com.nederlonder.wqms.mock;
 
 public class MockDataPoint {
 
-    String id;
-    double temp;
-    String humidity;
-    String co2;
-    String particle;
-    String ozone;
-    String time;
+    private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
+    private String id;
+    private double temp;
+    private String humidity;
+    private String co2;
+    private String particle;
+    private String ozone;
+    private String time;
 
     public String getId() {
         return id;
@@ -37,6 +39,10 @@ public class MockDataPoint {
     public String getTime() {
         return time;
     }
+
+//    public DateTime getDate() {
+//        return DateTimeFormat.forPattern(DATE_PATTERN).parseDateTime(time);
+//    }
 
     @Override
     public String toString() {

@@ -7,4 +7,11 @@
     <string name="label_goto_about">About</string>
     <string name="description_logo">logos</string>
 
+    <!-- AboutActivity -->
+    <string name="about_text">Placeholder Text</string>
+    <string name="desc_lake_slideshow">lake_slideshow</string>
+
+    <!-- LiveGraphActivity -->
+    <string name="header_title">Live Data Graph (MOCK DATA)</string>
+
 </resources>

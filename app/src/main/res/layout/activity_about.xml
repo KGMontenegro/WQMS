@@ -7,14 +7,15 @@
     tools:context=".AboutActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="301dp"
-        android:layout_height="199dp"
+        android:id="@+id/image_slideshow"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/about_text"
+        android:layout_marginTop="48dp"
+        android:contentDescription="@string/desc_lake_slideshow"
+        app:layout_constraintBottom_toTopOf="@+id/midline_marker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,17 +23,27 @@
 
     <TextView
         android:id="@+id/about_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="216dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
         android:background="#942882e2"
-        android:text="Placeholder Text"
+        android:gravity="center"
+        android:text="@string/about_text"
         android:textColor="@android:color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/midline_marker" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/midline_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="285dp" />
 
 </android.support.constraint.ConstraintLayout>
