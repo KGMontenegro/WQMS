@@ -2,27 +2,27 @@ package com.nederlonder.wqms;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.nederlonder.wqms.mock.MockDataPoint;
+import com.nederlonder.wqms.models.ChannelFeed;
+import com.nederlonder.wqms.models.ChannelStatus;
+import com.nederlonder.wqms.network.ThingSpeakApi;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class HistoricalActivity extends AppCompatActivity {
 
     private final String TAG = "[HistoricalActivity]";
-    private static String TAG_RAW_DATA = "LIVE_DATA";
 
+    private TextView text;
 
-    public static void start(Context context, String rawData) {
+    public static void start(Context context) {
         Intent intent = new Intent(context, HistoricalActivity.class);
-        intent.putExtra(TAG_RAW_DATA, rawData);
         context.startActivity(intent);
     }
 
@@ -30,15 +30,32 @@ public class HistoricalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historical);
+        text = findViewById(R.id.historical_text_view);
 
-        Gson gson = new Gson();
-        String rawMockData = getIntent().getStringExtra(TAG_RAW_DATA);
-        Type type = TypeToken.getParameterized(ArrayList.class, MockDataPoint.class).getType();
-        ArrayList<MockDataPoint> mockData = gson.fromJson(rawMockData, type);
-        Log.d(TAG, "loaded " + mockData.size() + " elements");
+        ThingSpeakApi.adapter().getChannelFeed()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ChannelFeed>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d(TAG, "onCompleted: status update complete");
+                    }
 
-        TextView text = findViewById(R.id.historical_text_view);
-        text.setText("Data History Graph (coming soon)\n\nmock data: ("+mockData.size()+" data points)\n" + mockData);
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "onError: status update failed", e);
+                    }
+
+                    @Override
+                    public void onNext(ChannelFeed feed) {
+                        Log.d(TAG, "onNext: received status update for channel " + feed.channel.name);
+                        String feedList = "\n";
+                        for (ChannelFeed.FeedEntry entry : feed.feeds) {
+                            feedList += entry.created_at + '\n';
+                        }
+                        text.setText(text.getText() + "\nlast entry: " + feed.channel.updated_at + feedList);
+                    }
+                });
 
     }
 }

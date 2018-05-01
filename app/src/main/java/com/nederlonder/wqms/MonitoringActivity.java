@@ -28,15 +28,8 @@ public class MonitoringActivity extends AppCompatActivity {
                 MockDataLoader loader = new MockDataLoader();
                 String mockData = loader.readJSONfile(getResources().openRawResource(R.raw.mock_data));
                 LiveGraphActivity.start(MonitoringActivity.this, mockData);
-//                MockJsonFetcher mockDataFetcher = new MockJsonFetcher();
-//                mockDataFetcher.setListener(new RawJsonFetcher.CallbackListener() {
-//                    @Override
-//                    public void onCallback(String result) {
-//                        LiveGraphActivity.start(MonitoringActivity.this, result);
-//                    }
-//                });
-//                mockDataFetcher.execute();
                 // todo fix ui/responsiveness issue
+                // ^^ do the fetching in LiveGraphActivity
             }
         });
 
@@ -44,18 +37,7 @@ public class MonitoringActivity extends AppCompatActivity {
         monitorHistoricalGraph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MockDataLoader loader = new MockDataLoader();
-                String mockData = loader.readJSONfile(getResources().openRawResource(R.raw.mock_data));
-                HistoricalActivity.start(MonitoringActivity.this, mockData);
-//                RawJsonFetcher mockDataFetcher = new RawJsonFetcher();
-//                mockDataFetcher.setListener(new RawJsonFetcher.CallbackListener() {
-//                    @Override
-//                    public void onCallback(String result) {
-//                        HistoricalActivity.start(MonitoringActivity.this, result);
-//                    }
-//                });
-//                mockDataFetcher.execute();
-                // todo fix ui/responsiveness issue
+                HistoricalActivity.start(MonitoringActivity.this);
             }
         });
     }
