@@ -9,8 +9,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ThingSpeakApiClient {
-    private OkHttpClient client;
     private static final String API_READ_KEY = "H0W2QIEABXZKQ6QO";
+    private OkHttpClient client;
 
     private ThingSpeakApiClient() {
         client = new OkHttpClient.Builder()
@@ -42,7 +42,7 @@ public class ThingSpeakApiClient {
 
         public ThingSpeakApiClient build() {
             ThingSpeakApiClient output = client;
-            client = null;
+            client = new ThingSpeakApiClient();
             return output;
         }
 

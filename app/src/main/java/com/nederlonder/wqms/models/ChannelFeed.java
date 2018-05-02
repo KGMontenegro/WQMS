@@ -6,6 +6,17 @@ public class ChannelFeed {
     public ChannelDetails channel;
     public List<FeedEntry> feeds;
 
+    public String[] getFieldNames() {
+        return new String[]{
+                channel.field1,
+                channel.field2,
+                channel.field3,
+                channel.field4,
+                channel.field5,
+                channel.field6
+        };
+    }
+
     public class ChannelDetails {
         public int id;
         public String name;

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutActivity"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".AboutActivity">
 
     <TextView
         android:id="@+id/about_text"
@@ -22,39 +21,46 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_temperature"
+        android:id="@+id/chart1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/about_text"
-        app:layout_constraintBottom_toTopOf="@+id/chart_humidity"/>
+        app:layout_constraintBottom_toTopOf="@+id/chart2"/>
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_humidity"
+        android:id="@+id/chart2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart_temperature"
-        app:layout_constraintBottom_toTopOf="@id/chart_co2"/>
+        app:layout_constraintTop_toBottomOf="@+id/chart1"
+        app:layout_constraintBottom_toTopOf="@id/chart3"/>
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_co2"
+        android:id="@+id/chart3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart_humidity"
-        app:layout_constraintBottom_toTopOf="@id/chart_particle"/>
+        app:layout_constraintTop_toBottomOf="@+id/chart2"
+        app:layout_constraintBottom_toTopOf="@id/chart4"/>
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_particle"
+        android:id="@+id/chart4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart_co2"
-        app:layout_constraintBottom_toTopOf="@id/chart_ozone"/>
+        app:layout_constraintTop_toBottomOf="@+id/chart3"
+        app:layout_constraintBottom_toTopOf="@id/chart5"/>
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_ozone"
+        android:id="@+id/chart5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/chart4"
+        app:layout_constraintBottom_toTopOf="@id/chart6"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toBottomOf="@id/chart_particle"
+        app:layout_constraintTop_toBottomOf="@id/chart5"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

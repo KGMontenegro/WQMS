@@ -13,27 +13,25 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.nederlonder.wqms.mock.MockDataPoint;
-import com.nederlonder.wqms.models.ChartType;
+import com.nederlonder.wqms.models.ChannelFeed;
+import com.nederlonder.wqms.network.ThingSpeakApi;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class LiveGraphActivity extends AppCompatActivity {
 
     private static String TAG_GRAPH_DATA = "LIVE_DATA";
     private String TAG = "[LIVE_GRAPH]";
 
-    private Map<ChartType, LineChart> charts = new HashMap<>();
-    private List<MockDataPoint> graphDataPoints;
-
-    private Map<ChartType, String> labels = new HashMap<>();
-
+    private String[] fieldNames;
+    private Map<String, LineChart> charts = new HashMap<>();
 
     public static void start(Context context, String rawData) {
         Intent intent = new Intent(context, LiveGraphActivity.class);
@@ -46,35 +44,58 @@ public class LiveGraphActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_graph);
 
-        configureCharts();
+        ThingSpeakApi.adapter().getChannelFeed()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ChannelFeed>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d(TAG, "onCompleted: status update complete");
+                    }
 
-        graphDataPoints = parseData(getIntent().getStringExtra(TAG_GRAPH_DATA), 100);
-        if (graphDataPoints.size() <= 0) {
-            Log.d(TAG, "no data returned!");
-            return;
-        }
-        populateGraph();
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "onError: status update failed", e);
+                        ((LineChart)findViewById(R.id.chart1)).setNoDataText("Failed to load");
+                        ((LineChart)findViewById(R.id.chart2)).setNoDataText("Failed to load");
+                        ((LineChart)findViewById(R.id.chart3)).setNoDataText("Failed to load");
+                        ((LineChart)findViewById(R.id.chart4)).setNoDataText("Failed to load");
+                        ((LineChart)findViewById(R.id.chart5)).setNoDataText("Failed to load");
+                        ((LineChart)findViewById(R.id.chart6)).setNoDataText("Failed to load");
+                    }
+
+                    @Override
+                    public void onNext(ChannelFeed feed) {
+                        Log.d(TAG, "onNext: received feed for channel " + feed.channel.name);
+                        fieldNames = feed.getFieldNames();
+                        configureCharts();
+                        populateGraph(feed);
+                    }
+                });
     }
 
-    private void populateGraph() {
-        Map<ChartType, List<Entry>> entries = new HashMap<>();
-        for (ChartType type : ChartType.values()) entries.put(type, new ArrayList<Entry>());
+    private void populateGraph(ChannelFeed data) {
+        Map<String, List<Entry>> entries = new HashMap<>();
+        for (String type : fieldNames)
+            entries.put(type, new ArrayList<Entry>());
 
-        for (MockDataPoint datum : graphDataPoints) {
-            entries.get(ChartType.TEMPERATURE)
-                    .add(new Entry(Integer.parseInt(datum.getId()), (float)datum.getTemp()));
-            entries.get(ChartType.HUMIDITY)
-                    .add(new Entry(Integer.parseInt(datum.getId()), Float.parseFloat(datum.getHumidity())));
-            entries.get(ChartType.CO2)
-                    .add(new Entry(Integer.parseInt(datum.getId()), Float.parseFloat(datum.getCo2())));
-            entries.get(ChartType.PARTICLE)
-                    .add(new Entry(Integer.parseInt(datum.getId()), Float.parseFloat(datum.getParticle())));
-            entries.get(ChartType.OZONE)
-                    .add(new Entry(Integer.parseInt(datum.getId()), Float.parseFloat(datum.getOzone())));
+        for (ChannelFeed.FeedEntry datum : data.feeds) {
+            if (datum.field1 != null)
+                entries.get(fieldNames[0]).add(new Entry(datum.entry_id, Float.parseFloat(datum.field1)));
+            if (datum.field2 != null)
+                entries.get(fieldNames[1]).add(new Entry(datum.entry_id, Float.parseFloat(datum.field2)));
+            if (datum.field3 != null)
+                entries.get(fieldNames[2]).add(new Entry(datum.entry_id, Float.parseFloat(datum.field3)));
+            if (datum.field4 != null)
+                entries.get(fieldNames[3]).add(new Entry(datum.entry_id, Float.parseFloat(datum.field4)));
+            if (datum.field5 != null)
+                entries.get(fieldNames[4]).add(new Entry(datum.entry_id, Float.parseFloat(datum.field5)));
+            if (datum.field6 != null)
+                entries.get(fieldNames[5]).add(new Entry(datum.entry_id, Float.parseFloat(datum.field6)));
         }
 
-        for (ChartType type : ChartType.values()) {
-            LineDataSet dataSet = new LineDataSet(entries.get(type), type.name()); // add entries to dataset
+        for (String type : fieldNames) {
+            LineDataSet dataSet = new LineDataSet(entries.get(type), type); // add entries to dataset
             LineData lineData = new LineData(dataSet);
 
             charts.get(type).setData(lineData);
@@ -83,11 +104,12 @@ public class LiveGraphActivity extends AppCompatActivity {
     }
 
     private void configureCharts() {
-        charts.put(ChartType.TEMPERATURE, (LineChart)findViewById(R.id.chart_temperature));
-        charts.put(ChartType.HUMIDITY, (LineChart)findViewById(R.id.chart_humidity));
-        charts.put(ChartType.CO2, (LineChart)findViewById(R.id.chart_co2));
-        charts.put(ChartType.PARTICLE, (LineChart)findViewById(R.id.chart_particle));
-        charts.put(ChartType.OZONE, (LineChart)findViewById(R.id.chart_ozone));
+        charts.put(fieldNames[0], (LineChart)findViewById(R.id.chart1));
+        charts.put(fieldNames[1], (LineChart)findViewById(R.id.chart2));
+        charts.put(fieldNames[2], (LineChart)findViewById(R.id.chart3));
+        charts.put(fieldNames[3], (LineChart)findViewById(R.id.chart4));
+        charts.put(fieldNames[4], (LineChart)findViewById(R.id.chart5));
+        charts.put(fieldNames[5], (LineChart)findViewById(R.id.chart6));
 
         for (LineChart chart : charts.values()) {
             chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -95,17 +117,8 @@ public class LiveGraphActivity extends AppCompatActivity {
             chart.getDescription().setEnabled(false);
             chart.setDrawBorders(true);
             chart.setTouchEnabled(false);
+
+            chart.setMaxVisibleValueCount(0);
         }
-    }
-
-    private List<MockDataPoint> parseData(String rawData, int limit) {
-        // TODO use date not data-id for limit?
-
-        Gson gson = new Gson();
-        Type type = TypeToken.getParameterized(ArrayList.class, MockDataPoint.class).getType();
-        List<MockDataPoint> result = gson.fromJson(rawData, type);
-        if (result.size() > limit)
-            result = result.subList(result.size() - limit, result.size());
-        return result;
     }
 }
