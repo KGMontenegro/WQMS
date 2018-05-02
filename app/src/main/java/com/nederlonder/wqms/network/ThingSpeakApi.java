@@ -8,6 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ThingSpeakApi {
 
+    private final String TIME_FORMAT = "YYYY-MM-DD%20HH:NN:SS";
+
     private ThingSpeakApi() {
     }
 
@@ -22,5 +24,7 @@ public class ThingSpeakApi {
                 .build()
                 .create(ThingSpeakApiAdapter.class);
     }
+
+    // time method?
 
 }
