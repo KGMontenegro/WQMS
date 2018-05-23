@@ -21,7 +21,7 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".LiveGraphActivity" />
         <activity android:name=".HistoricalActivity" />
-        <activity android:name=".LiveGraphDetailActivity" />
+        <activity android:name=".GraphDetailActivity" />
     </application>
 
 </manifest>
