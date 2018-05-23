@@ -33,6 +33,12 @@ public class LiveGraphActivity extends AppCompatActivity {
     private String[] fieldNames;
     private Map<String, LineChart> charts = new HashMap<>();
 
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, LiveGraphActivity.class);
+        context.startActivity(intent);
+    }
+
     public static void start(Context context, String rawData) {
         Intent intent = new Intent(context, LiveGraphActivity.class);
         intent.putExtra(TAG_GRAPH_DATA, rawData);

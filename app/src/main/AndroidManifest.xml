@@ -19,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".AboutActivity" />
-        <activity android:name=".MonitoringActivity" />
         <activity android:name=".LiveGraphActivity" />
         <activity android:name=".HistoricalActivity" />
         <activity android:name=".LiveGraphDetailActivity" />
