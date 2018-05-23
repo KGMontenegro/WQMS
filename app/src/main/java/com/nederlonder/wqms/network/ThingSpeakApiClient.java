@@ -9,9 +9,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ThingSpeakApiClient {
+
     private static final String API_READ_KEY = "H0W2QIEABXZKQ6QO";
     private static final String TIMEZONE = "America/Los_Angeles";
     private OkHttpClient client;
+
 
     private ThingSpeakApiClient() {
         client = new OkHttpClient.Builder()

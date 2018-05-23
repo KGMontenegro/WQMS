@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -122,9 +123,16 @@ public class LiveGraphActivity extends AppCompatActivity {
             chart.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
             chart.getDescription().setEnabled(false);
             chart.setDrawBorders(true);
-            chart.setTouchEnabled(false);
+//            chart.setTouchEnabled(false);
 
             chart.setMaxVisibleValueCount(0);
+
+            chart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    GraphDetailActivity.start(LiveGraphActivity.this);
+                }
+            });
         }
     }
 }

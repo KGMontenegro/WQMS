@@ -8,7 +8,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ThingSpeakApi {
 
+    private static final String BASE_URL = "https://api.thingspeak.com/channels/431493";
+
     private final String TIME_FORMAT = "YYYY-MM-DD%20HH:NN:SS";
+
 
     private ThingSpeakApi() {
     }
@@ -17,7 +20,7 @@ public class ThingSpeakApi {
         Gson gson = new Gson();
 
         return new Retrofit.Builder()
-                .baseUrl("https://api.thingspeak.com/channels/431493/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(new ThingSpeakApiClient.Builder().build().client())

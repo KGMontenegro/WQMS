@@ -8,9 +8,7 @@ import retrofit2.http.Query;
 import rx.Observable;
 
 public interface ThingSpeakApiAdapter {
-//    API Requests
-//    private static final String API_READ_KEY = "H0W2QIEABXZKQ6QO";
-//    private static final String baseUrl = "https://api.thingspeak.com/channels/431493";
+    // API Requests
 
     // get a channel feed
     @GET("feeds.json")
