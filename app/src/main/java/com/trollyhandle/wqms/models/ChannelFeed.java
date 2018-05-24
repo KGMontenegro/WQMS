@@ -1,4 +1,4 @@
-package com.nederlonder.wqms.models;
+package com.trollyhandle.wqms.models;
 
 import java.util.List;
 

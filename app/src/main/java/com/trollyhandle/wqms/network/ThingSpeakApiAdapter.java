@@ -1,7 +1,7 @@
-package com.nederlonder.wqms.network;
+package com.trollyhandle.wqms.network;
 
-import com.nederlonder.wqms.models.ChannelFeed;
-import com.nederlonder.wqms.models.ChannelStatus;
+import com.trollyhandle.wqms.models.ChannelFeed;
+import com.trollyhandle.wqms.models.ChannelStatus;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

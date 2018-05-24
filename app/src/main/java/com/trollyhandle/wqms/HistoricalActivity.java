@@ -1,4 +1,4 @@
-package com.nederlonder.wqms;
+package com.trollyhandle.wqms;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.nederlonder.wqms.models.ChannelFeed;
-import com.nederlonder.wqms.models.ChannelStatus;
-import com.nederlonder.wqms.network.ThingSpeakApi;
+import com.trollyhandle.wqms.models.ChannelFeed;
+import com.trollyhandle.wqms.models.ChannelStatus;
+import com.trollyhandle.wqms.network.ThingSpeakApi;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;

@@ -1,6 +1,6 @@
-package com.nederlonder.wqms.mock;
+package com.trollyhandle.wqms.mock;
 
-import com.nederlonder.wqms.network.RawJsonFetcher;
+import com.trollyhandle.wqms.network.RawJsonFetcher;
 
 public class MockJsonFetcher extends RawJsonFetcher {
     private static final String mockDataUrl =

@@ -1,4 +1,4 @@
-package com.nederlonder.wqms;
+package com.trollyhandle.wqms;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.nederlonder.wqms", appContext.getPackageName());
+        assertEquals("com.trollyhandle.wqms", appContext.getPackageName());
     }
 }

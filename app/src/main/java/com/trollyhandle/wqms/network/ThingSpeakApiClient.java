@@ -1,4 +1,4 @@
-package com.nederlonder.wqms.network;
+package com.trollyhandle.wqms.network;
 
 import java.io.IOException;
 

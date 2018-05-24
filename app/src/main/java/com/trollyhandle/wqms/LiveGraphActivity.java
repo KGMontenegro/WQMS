@@ -1,4 +1,4 @@
-package com.nederlonder.wqms;
+package com.trollyhandle.wqms;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +19,8 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.nederlonder.wqms.models.ChannelFeed;
-import com.nederlonder.wqms.network.ThingSpeakApi;
+import com.trollyhandle.wqms.models.ChannelFeed;
+import com.trollyhandle.wqms.network.ThingSpeakApi;
 
 import java.util.ArrayList;
 import java.util.HashMap;

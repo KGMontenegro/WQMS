@@ -1,4 +1,4 @@
-package com.nederlonder.wqms.mock;
+package com.trollyhandle.wqms.mock;
 
 public class MockDataPoint {
 

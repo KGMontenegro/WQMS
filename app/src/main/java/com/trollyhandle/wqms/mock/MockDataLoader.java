@@ -1,4 +1,4 @@
-package com.nederlonder.wqms.mock;
+package com.trollyhandle.wqms.mock;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

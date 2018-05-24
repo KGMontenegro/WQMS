@@ -1,4 +1,4 @@
-package com.nederlonder.wqms;
+package com.trollyhandle.wqms;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
