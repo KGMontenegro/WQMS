@@ -64,7 +64,6 @@ public class LiveGraphActivity extends AppCompatActivity {
         chartListContainer = findViewById(R.id.graph_list_container);
         failedLoadText = findViewById(R.id.text_loading_failed);
 
-
         ThingSpeakApi.adapter().getChannelFeed()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -81,8 +80,6 @@ public class LiveGraphActivity extends AppCompatActivity {
 
                         progressBar.setVisibility(View.GONE);
                         failedLoadText.setVisibility(View.VISIBLE);
-
-                        Toast.makeText(LiveGraphActivity.this, "Failed to load data", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -128,7 +125,6 @@ public class LiveGraphActivity extends AppCompatActivity {
 
             charts.put(fieldName, chart);
 
-
         }
     }
 
@@ -154,6 +150,7 @@ public class LiveGraphActivity extends AppCompatActivity {
 
         for (String type : fieldNames) {
             LineDataSet dataSet = new LineDataSet(entries.get(type), type); // add entries to dataset
+            dataSet.setDrawCircles(false);
             LineData lineData = new LineData(dataSet);
 
             charts.get(type).setData(lineData);

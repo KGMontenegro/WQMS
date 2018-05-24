@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LiveGraphActivity">
 
     <TextView
@@ -18,27 +18,27 @@
 
     <LinearLayout
         android:id="@+id/graph_list_container"
-        android:layout_below="@id/about_text"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/about_text"
         android:layout_margin="4dp"
         android:orientation="vertical">
 
         <ProgressBar
-            android:layout_marginTop="16dp"
             android:id="@+id/graph_list_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="visible"/>
+            android:layout_marginTop="16dp"
+            android:visibility="visible" />
 
         <TextView
-            android:layout_marginTop="16dp"
             android:id="@+id/text_loading_failed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:text="@string/failed_to_load_data_text"
             android:visibility="gone" />
 
