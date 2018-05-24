@@ -38,21 +38,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.338" />
 
+
     <Button
-        android:id="@+id/monitoring_button"
+        android:id="@+id/button_monitor_live_graph"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/label_goto_graphs"
-        app:layout_constraintBottom_toTopOf="@+id/about_button"
+        android:text="Real Time Data"
+        app:layout_constraintBottom_toTopOf="@+id/button_monitor_historical_graph"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_app_title"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/button_monitor_historical_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Historical Data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_monitor_live_graph" />
 
     <Button
         android:id="@+id/about_button"
@@ -66,7 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/monitoring_button" />
+        app:layout_constraintTop_toBottomOf="@+id/button_monitor_historical_graph" />
 
     <ImageButton
         android:id="@+id/logo_button"
@@ -82,9 +98,5 @@
         app:srcCompat="@drawable/logos"
         android:contentDescription="@string/description_logo"/>
 
-    <android.support.constraint.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 </android.support.constraint.ConstraintLayout>

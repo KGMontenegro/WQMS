@@ -1,60 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutActivity"
-    tools:layout_editor_absoluteY="25dp">
+    android:orientation="vertical"
+    tools:context=".LiveGraphActivity">
 
     <TextView
         android:id="@+id/about_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text="@string/header_title"
         android:textColor="@android:color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="16sp" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_temperature"
+    <LinearLayout
+        android:id="@+id/graph_list_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/about_text"
-        app:layout_constraintBottom_toTopOf="@+id/chart_humidity"/>
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/about_text"
+        android:layout_margin="4dp"
+        android:orientation="vertical">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_humidity"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart_temperature"
-        app:layout_constraintBottom_toTopOf="@id/chart_co2"/>
+        <ProgressBar
+            android:id="@+id/graph_list_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:visibility="visible" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_co2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart_humidity"
-        app:layout_constraintBottom_toTopOf="@id/chart_particle"/>
+        <TextView
+            android:id="@+id/text_loading_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="@string/failed_to_load_data_text"
+            android:visibility="gone" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_particle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart_co2"
-        app:layout_constraintBottom_toTopOf="@id/chart_ozone"/>
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_ozone"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toBottomOf="@id/chart_particle"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <!--<com.github.mikephil.charting.charts.LineChart-->
+        <!--android:id="@+id/chart1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/about_text"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/chart2"/>-->
 
-</android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</RelativeLayout>
