@@ -1,66 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutActivity">
+    tools:context=".LiveGraphActivity">
 
     <TextView
         android:id="@+id/about_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text="@string/header_title"
         android:textColor="@android:color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="16sp" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart1"
+    <LinearLayout
+        android:id="@+id/graph_list_container"
+        android:layout_below="@id/about_text"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/about_text"
-        app:layout_constraintBottom_toTopOf="@+id/chart2"/>
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:orientation="vertical">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart1"
-        app:layout_constraintBottom_toTopOf="@id/chart3"/>
+        <ProgressBar
+            android:layout_marginTop="16dp"
+            android:id="@+id/graph_list_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible"/>
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart2"
-        app:layout_constraintBottom_toTopOf="@id/chart4"/>
+        <TextView
+            android:layout_marginTop="16dp"
+            android:id="@+id/text_loading_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/failed_to_load_data_text"
+            android:visibility="gone" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart4"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart3"
-        app:layout_constraintBottom_toTopOf="@id/chart5"/>
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/chart4"
-        app:layout_constraintBottom_toTopOf="@id/chart6"/>
+        <!--<com.github.mikephil.charting.charts.LineChart-->
+        <!--android:id="@+id/chart1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/about_text"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/chart2"/>-->
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart6"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toBottomOf="@id/chart5"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-</android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</RelativeLayout>

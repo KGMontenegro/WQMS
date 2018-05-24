@@ -12,6 +12,7 @@
     <string name="desc_lake_slideshow">lake_slideshow</string>
 
     <!-- LiveGraphActivity -->
-    <string name="header_title">Live Data Graph (MOCK DATA)</string>
+    <string name="header_title">Real-time Data Graph</string>
+    <string name="failed_to_load_data_text">Failed to load data</string>
 
 </resources>
